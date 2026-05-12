@@ -48,3 +48,9 @@ h1{
     transform: scale(1.05);
 
 }
+
+#result{
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+}

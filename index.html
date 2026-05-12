@@ -80,9 +80,36 @@
                for(let i = 0; i < 4; i++) {
                      buttons[i].innerHTML = questions[current].Options[i];
                }
-               }
-
             
+            }
+            function checkAnswer(index) {
+                let buttons = document.getElementsByClassname("option");
+                if(buttons[index].innerHTML===questions[current].answer) {
+                    score++;
+                    document.getElementById("score").innerHTML = "score: " + score;
+                    document.getElementById("result").innerHTML =  "✅ Correct!";
+                } else {
+                    document.getElementById("result").innerHTML = 
+                    "❌ Wrong! It was " + questions[current].answer;
+
+                }
+                current++;
+                if(current < questions.lenght){
+                    setTimeout(() => {
+                        document.getElementById("result").innerHTML = "";
+                        loadQestion();
+                    }, 1000);
+                } else {
+                    setTimeout(() => {
+                        document.querySelector(".game").innerHTML = 
+                        "<h1> 🎉 Game Over 🎉</h1>" +
+                        "<h2> Your final score is: " + score + "/" + questions.length + "</h2>";
+                    }, 1000);
+
+                    }
+            }
+                loadQestion();
+
         </script>
     </body>
 </html>
