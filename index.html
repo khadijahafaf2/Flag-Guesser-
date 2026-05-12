@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guess the Flag</title>
+        <link rel="stylesheet" href="style.css">   
+    </head>
+
+    <body>
+        
+        <div class="game">
+            <h1> 🌍 Can You Guess the Flag? </h1>
+
+            <p id = "score"> Score: 0 </p>
+
+            <img id = "flag" src="flags/usa.png" alt="Flag Image">
+            
+            <div id = "buttons">
+                <button class="option" onclick=" checkAnswer(0)"> Option 1 </button>
+                <button class="option" onclick=" checkAnswer(1)"> Option 2 </button>
+                <button class="option" onclick=" checkAnswer(2)"> Option 3 </button>
+                <button class="option" onclick=" checkAnswer(3)"> Option 4 </button>    
+
+            </div>
+            <p id = "result"> </p>
+        </div>
+         
+        <script>
+            const flags = [
+          {
+               Flag: "flags/japan.png",
+               answer: "Japan",
+               Options: ["Japan", "China", "South Korea", "Vietnam"]
+            },
+            
+            { 
+                Flag: "flags/Ukirane.png",
+                answer: "Ukraine",
+                Options: ["Sweden", "Ukraine", "Belarus", "Poland"]
+            },
+          
+            {
+                Flag: "flags/germany.png",
+                answer: "Germany",
+                Options: ["Poland", "Netherlands", "Germany", "Austria"]
+            },
+
+            {
+                Flag: "flags/brazil.png",
+                answer: "Brazil",
+                Options: ["Argentina", "Brazil", "Colombia", "Peru"]
+            },
+
+            {
+                Flag: "flags/italy.png",
+                answer: "Italy",
+                Options: ["Italy", "Brazil", "Madagascar", "Portugal"]
+            },
+
+            {
+                Flag: "flags/india.png",
+                answer: "India",
+                Options: ["Sri Lanka", "Saudi Arabia", "Iraq", "India"]
+            },
+
+            {
+                Flag: "flags/canada.png",
+                answer: "Canada",
+                Options: ["Mexico", "India", "Turkey", "Canada"]
+            }
+            ];
+
+            let current = 0;
+            let score = 0;
+
+            function loadQestion() {;                   
+               document.getElementById("flag").src = qestions[current].Flag;
+                
+               let buttons = document.getElementsByClassName("option");
+              
+               for(let i = 0; i < 4; i++) {
+                     buttons[i].innerHTML = questions[current].Options[i];
+               }
+               }
+
+            
+        </script>
+    </body>
+</html>
