@@ -33,87 +33,77 @@
         </div>
          
         <script>
-            const questions = [
-          {
-               Flag: "japan.jpg",
-               answer: "Japan",
-               Options: ["Japan", "China", "South Korea", "Vietnam"]
-            },
-            
-            { 
-                Flag: "Ukraine.jpeg",
-                answer: "Ukraine",
-                Options: ["Sweden", "Ukraine", "Belarus", "Poland"]
-            },
-          
-            {
-                Flag: "Germany.jpg",
-                answer: "Germany",
-                Options: ["Poland", "Netherlands", "Germany", "Austria"]
-            },
 
-            {
-                Flag: "brazil.jpg",
-                answer: "Brazil",
-                Options: ["Argentina", "Brazil", "Colombia", "Peru"]
-            },
+  const questions = [
+{
+    Flag: "japan.jpg",
+    answer: "Japan",
+    Options: ["Japan", "China", "South Korea", "Vietnam"]
+},
+{
+    Flag: "Ukraine.jpeg",
+    answer: "Ukraine",
+    Options: ["Sweden", "Ukraine", "Belarus", "Poland"]
+},
+{
+    Flag: "Germany.jpg",
+    answer: "Germany",
+    Options: ["Poland", "Netherlands", "Germany", "Austria"]
+},
+{
+    Flag: "France.png",
+    answer: "France",
+    Options: ["Colombia", "Bellarus", "Austria", "France",]
+},
+{
+    Flag: "Brazil.jpg",
+    answer: "Brazil",
+    Options: ["Thailand", "Norway", "Sweden", "Brazil",]
+},
+{
+    Flag: "italy.jpg",
+    answer:"Italy",
+    Options: ["Finland","New Zealand", "Italy","Poland",]
 
-            {
-                Flag: "italy.jpg",
-                answer: "Italy",
-                Options: ["Italy", "Brazil", "Madagascar", "Portugal"]
-            },
+},
+{
+    Flag: "colombia.jpg",
+    answer: "Colombia",
+    Options: ["Bolivia","Colombia","Peru","South Africa",]
+},
+{
+    Flag: "canada.jpg",
+    answer: "Canada",
+    Options: ["Canada","Algeria","Kenya","USA",]
 
-            {
-                Flag: "india.jpeg",
-                answer: "India",
-                Options: ["Sri Lanka", "Saudi Arabia", "Iraq", "India"]
-            },
+},
+{
+    Flag: "india.jpeg",
+    answer:"India",
+    Options: ["Sri Lanka","Egypt","India","France",]
+}
+];
 
-            {
-                Flag: "canada.jpg",
-                answer: "Canada",
-                Options: ["Mexico", "India", "Turkey", "Canada"]
-            },
+   let current = 0;
+   let score = 0;
 
-            {
-                Flag: "France.png",
-                answer: "France",
-                Options: ["Italy", "Netherlands", "France", "Russia"]
-            },
+function startGame() {
+    document.getElementById("home").style.display = "none";
+    document.querySelector(".game").style.display = "block";
+    loadQuestion(); // start game HERE
+}
 
-            {
-                Flag: "colombia.jpg",
-                answer: "Colombia",
-                Options: ["China", "Colombia", "Peru", "Venezuela"]
-            },
+function loadQuestion() {
+    document.getElementById("flag").src = questions[current].Flag;
 
-            {
-                Flag: "southafrica.jpg",
-                answer: "South Africa",
-                Options: ["South Africa", "Kenya", "Nigeria", "Egypt"]
-            }
-            ];
+    let buttons = document.getElementsByClassName("option");
 
-            let current = 0;
-            let score = 0;
+    for (let i = 0; i < 4; i++) {
+        buttons[i].innerHTML = questions[current].Options[i];
+    }
+}
 
-            function startGame() {
-                document.getElementById("home").style.display = "none";
-                document.querySelector(".game").style.display = "block";
-            }
-
-            function loadQuestion() {;                   
-               document.getElementById("flag").src = questions[current].Flag;
-                
-               let buttons = document.getElementsByClassName("option");
-              
-               for(let i = 0; i < 4; i++) {
-                     buttons[i].innerHTML = questions[current].Options[i];
-               }
-            
-            }
-            function checkAnswer(index) {
+function checkAnswer(index) {
 
     let buttons = document.getElementsByClassName("option");
 
@@ -137,28 +127,12 @@
         } else {
             document.querySelector(".game").innerHTML =
             "<h1>🎉 Game Over 🎉</h1>" +
-            "<h2>Your final score is: " + score + "/" + questions.length + "</h2>";
+            "<h2>Your Final Score: " + score + "/" + questions.length + "</h2>";
         }
 
     }, 1000);
-       }
-                }
-                if(current < questions.length){
-                    setTimeout(() => {
-                        document.getElementById("result").innerHTML = "";
-                        loadQuestion();
-                    }, 1000);
-                } else {
-                    setTimeout(() => {
-                        document.querySelector(".game").innerHTML = 
-                        "<h1> 🎉 Game Over 🎉</h1>" +
-                        "<h2> Your final score is: " + score + "/" + questions.length + "</h2>";
-                    }, 1000);
+}
 
-                    }
-            });
-                loadQuestion();
-
-        </script>
+</script>
     </body>
 </html>
