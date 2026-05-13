@@ -3,13 +3,18 @@
     <head>
         <title>Guess the Flag</title>
         <link rel="stylesheet" href="style.css">   
+        <img src = "sticker1.png" class="sticker top-left"> 
+        <img src = "sticker2.png" class="sticker top-right">
+        <img src = "sticker3.png" class="sticker bottom-left">
+        <img src = "sticker4.png" class="sticker bottom-right">
+        
     </head>
 
     <body>
         <div id="home">
             <h1>🌍 Guess The Flag </h1>
            <audio id="bgMusic" loop>
-            <source src="music3.m4a" type="audio/mpeg">
+            <source src="music.weba" type="audio/mpeg">
            </audio>
             <img src="flages.jpeg" alt="home image">
             <br><br>
@@ -89,19 +94,32 @@
     Flag: "india.jpeg",
     answer:"India",
     Options: ["Sri Lanka","Egypt","India","France",]
-}
+},
+{ 
+    Flag: "mongolia.jpeg",
+    answer: "Mongolia",
+    Options: ["Mongolia","Turkmenistan","Tajkistan","Kyrgystan",] 
+},
+{
+    Flag: "morocco.jpeg",
+    answer: "Morocco",
+    Options: ["Turkey","Morocco","Madagascar","China",]
+},
 ];
 
    let current = 0;
    let score = 0;
 
-   window.onload = function() {
-   let music = document.getElemtById("bgMusic");
+  window.onload = function() {
 
-   document.getElementById("volumeSlider").addEventListener("input",function(){
-    music.volume = this.value;
+   let music = document.getElementById("bgMusic");
+
+   document.getElementById("volumeSlider").addEventListener("input", function() {
+
+      music.volume = this.value;
+
    });
-   
+
 };
 
 function startGame() {
@@ -121,7 +139,7 @@ function loadQuestion() {
 
     for (let i = 0; i < 4; i++) {
         buttons[i].innerHTML = questions[current].Options[i];
-    }
+    } 
 }
 
 function checkAnswer(index) {
@@ -152,8 +170,7 @@ function checkAnswer(index) {
         }
 
     }, 1000);
-}
-
+}    
 </script>
-    </body>
-</html>
+ </body>
+</html> 

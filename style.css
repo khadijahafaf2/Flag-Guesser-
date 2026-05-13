@@ -1,5 +1,5 @@
 body{
-    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    background: linear-gradient(to right, #a8befe, #b6e5ac);
     font-family: New Times Roman, serif;
     Text-align: center;
 }
@@ -30,8 +30,35 @@ h1{
 }
 
 #start-btn:hover{
-    background: #59ba5e;
+    background: #8ae48e;
     transform: scale(1.1);
+}
+
+.sticker{
+    position: fixed;
+    width: 120px;
+    z-index: 1000;
+}
+
+
+.top-left{
+    top: 0;
+    left: 0;
+}
+
+.top-right{
+    top: 0;
+    right: 0;
+}
+
+.bottom-left{
+    bottom: 0;
+    right: 0;
+}
+
+.bottom-right{
+    bottom: 0;
+    right: 0;
 }
 
 .game{
