@@ -6,8 +6,16 @@
     </head>
 
     <body>
-        
-        <div class="game">
+        <div id="home">
+            <h1>🌍 Guess The Flag </h1>
+            <img src="flages.jpeg" alt="home image">
+            <br><br>
+            <button id="start-btn" onclick="startGame()">
+                Start Game
+            </button>
+        </div>
+
+        <div class="game" style="display:none;">
             <h1> 🌍 Can You Guess the Flag? </h1>
 
             <p id = "score"> Score: 0 </p>
@@ -25,55 +33,78 @@
         </div>
          
         <script>
-            const flags = [
+            const questions = [
           {
-               Flag: "flags/japan.png",
+               Flag: "japan.jpg",
                answer: "Japan",
                Options: ["Japan", "China", "South Korea", "Vietnam"]
             },
             
             { 
-                Flag: "flags/Ukirane.png",
+                Flag: "Ukraine.jpeg",
                 answer: "Ukraine",
                 Options: ["Sweden", "Ukraine", "Belarus", "Poland"]
             },
           
             {
-                Flag: "flags/germany.png",
+                Flag: "Germany.jpg",
                 answer: "Germany",
                 Options: ["Poland", "Netherlands", "Germany", "Austria"]
             },
 
             {
-                Flag: "flags/brazil.png",
+                Flag: "brazil.jpg",
                 answer: "Brazil",
                 Options: ["Argentina", "Brazil", "Colombia", "Peru"]
             },
 
             {
-                Flag: "flags/italy.png",
+                Flag: "italy.jpg",
                 answer: "Italy",
                 Options: ["Italy", "Brazil", "Madagascar", "Portugal"]
             },
 
             {
-                Flag: "flags/india.png",
+                Flag: "india.jpeg",
                 answer: "India",
                 Options: ["Sri Lanka", "Saudi Arabia", "Iraq", "India"]
             },
 
             {
-                Flag: "flags/canada.png",
+                Flag: "canada.jpg",
                 answer: "Canada",
                 Options: ["Mexico", "India", "Turkey", "Canada"]
+            },
+
+            {
+                Flag: "France.png",
+                answer: "France",
+                Options: ["Italy", "Netherlands", "France", "Russia"]
+            },
+
+            {
+                Flag: "colombia.jpg",
+                answer: "Colombia",
+                Options: ["China", "Colombia", "Peru", "Venezuela"]
+            },
+
+            {
+                Flag: "southafrica.jpg",
+                answer: "South Africa",
+                Options: ["South Africa", "Kenya", "Nigeria", "Egypt"]
             }
             ];
 
             let current = 0;
             let score = 0;
 
-            function loadQestion() {;                   
-               document.getElementById("flag").src = qestions[current].Flag;
+            function startGame() {
+                document.getElementById("home").style.display = "none";
+                document.querySelector(".game").style.display = "block";
+            }
+
+            function loadQuestion() {;                   
+               document.getElementById("flag").src = questions[current].Flag;
                 
                let buttons = document.getElementsByClassName("option");
               
@@ -83,21 +114,39 @@
             
             }
             function checkAnswer(index) {
-                let buttons = document.getElementsByClassname("option");
-                if(buttons[index].innerHTML===questions[current].answer) {
-                    score++;
-                    document.getElementById("score").innerHTML = "score: " + score;
-                    document.getElementById("result").innerHTML =  "✅ Correct!";
-                } else {
-                    document.getElementById("result").innerHTML = 
-                    "❌ Wrong! It was " + questions[current].answer;
 
+    let buttons = document.getElementsByClassName("option");
+
+    if (buttons[index].innerHTML === questions[current].answer) {
+        score++;
+        document.getElementById("score").innerHTML = "Score: " + score;
+        document.getElementById("result").innerHTML = "✅ Correct!";
+    } else {
+        document.getElementById("result").innerHTML =
+        "❌ Wrong! It was " + questions[current].answer;
+    }
+
+    current++;
+
+    setTimeout(() => {
+
+        document.getElementById("result").innerHTML = "";
+
+        if (current < questions.length) {
+            loadQuestion();
+        } else {
+            document.querySelector(".game").innerHTML =
+            "<h1>🎉 Game Over 🎉</h1>" +
+            "<h2>Your final score is: " + score + "/" + questions.length + "</h2>";
+        }
+
+    }, 1000);
+       }
                 }
-                current++;
-                if(current < questions.lenght){
+                if(current < questions.length){
                     setTimeout(() => {
                         document.getElementById("result").innerHTML = "";
-                        loadQestion();
+                        loadQuestion();
                     }, 1000);
                 } else {
                     setTimeout(() => {
@@ -107,8 +156,8 @@
                     }, 1000);
 
                     }
-            }
-                loadQestion();
+            });
+                loadQuestion();
 
         </script>
     </body>
