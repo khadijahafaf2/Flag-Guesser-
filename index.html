@@ -8,6 +8,9 @@
     <body>
         <div id="home">
             <h1>🌍 Guess The Flag </h1>
+           <audio id="bgMusic" loop>
+            <source src="music3.m4a" type="audio/mpeg">
+           </audio>
             <img src="flages.jpeg" alt="home image">
             <br><br>
             <button id="start-btn" onclick="startGame()">
@@ -30,6 +33,11 @@
 
             </div>
             <p id = "result"> </p>
+
+            <div id ="volume-control">
+                 🔊 Volume
+                 <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+            </div>
         </div>
          
         <script>
@@ -87,9 +95,22 @@
    let current = 0;
    let score = 0;
 
+   window.onload = function() {
+   let music = document.getElemtById("bgMusic");
+
+   document.getElementById("volumeSlider").addEventListener("input",function(){
+    music.volume = this.value;
+   });
+   
+};
+
 function startGame() {
     document.getElementById("home").style.display = "none";
     document.querySelector(".game").style.display = "block";
+    
+    let music = document.getElementById("bgMusic");
+    music.play();
+
     loadQuestion(); // start game HERE
 }
 
