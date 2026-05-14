@@ -7,9 +7,7 @@
         <img src = "sticker2.png" class="sticker top-right">
         <img src = "sticker3.png" class="sticker bottom-left">
         <img src = "sticker4.png" class="sticker bottom-right">
-        
     </head>
-
     <body>
         <div id="home">
             <h1>🌍 Guess The Flag </h1>
@@ -19,7 +17,7 @@
             <img src="flages.jpeg" alt="home image">
             <br><br>
             <button id="start-btn" onclick="startGame()">
-                Start Game
+                Start Game!
             </button>
         </div>
 
@@ -40,7 +38,7 @@
             <p id = "result"> </p>
 
             <div id ="volume-control">
-                 🔊 Volume
+                 🔊 Volume!
                  <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
             </div>
         </div>
@@ -95,16 +93,7 @@
     answer:"India",
     Options: ["Sri Lanka","Egypt","India","France",]
 },
-{ 
-    Flag: "mongolia.jpeg",
-    answer: "Mongolia",
-    Options: ["Mongolia","Turkmenistan","Tajkistan","Kyrgystan",] 
-},
-{
-    Flag: "morocco.jpeg",
-    answer: "Morocco",
-    Options: ["Turkey","Morocco","Madagascar","China",]
-},
+ 
 ];
 
    let current = 0;
@@ -149,10 +138,10 @@ function checkAnswer(index) {
     if (buttons[index].innerHTML === questions[current].answer) {
         score++;
         document.getElementById("score").innerHTML = "Score: " + score;
-        document.getElementById("result").innerHTML = "✅ Correct!";
+        document.getElementById("result").innerHTML = "Yo u got it✅ Correct!";
     } else {
         document.getElementById("result").innerHTML =
-        "❌ Wrong! It was " + questions[current].answer;
+        "❌ dang u suck! It was " + questions[current].answer;
     }
 
     current++;
